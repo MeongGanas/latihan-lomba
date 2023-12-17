@@ -34,16 +34,18 @@ header h1 a {
 nav {
   position: absolute;
   display: block;
-  top: 50px;
+  top: 100%;
   right: 10px;
   padding: 20px 30px;
   border-radius: 10px;
   background-color: white;
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
     0 8px 10px -6px rgb(0 0 0 / 0.1);
+  animation: growOut 300ms ease-in-out;
 }
 nav.hidden {
   display: none;
+  transition: 0.2s ease;
 }
 a {
   text-decoration: none;
@@ -119,10 +121,15 @@ img {
   max-width: 300px;
   height: 250px;
   padding: 40px 20px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
   border-radius: 10px;
+  transition: 0.2s ease-in-out;
 }
+#about .card:hover {
+  border: 1px solid black;
+}
+
 #about .card:not(:last-child) {
   margin-bottom: 20px;
 }
@@ -150,10 +157,13 @@ img {
   margin: 10px 0;
 }
 
+#program {
+  padding: 40px 0;
+}
 #program .card-list {
   display: flex;
   overflow-x: auto;
-  padding: 20px;
+  padding: 10px;
 }
 #program .card-list::-webkit-scrollbar {
   display: none;
@@ -164,7 +174,12 @@ img {
   padding: 40px 20px;
   background-color: #ffc43b;
   border-radius: 10px;
+  border: 1px solid black;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.272);
+  transition: 0.2s ease-in-out;
+}
+#program .card:hover {
+  background-color: white;
 }
 #program .card:not(:last-child) {
   margin-right: 20px;
@@ -220,7 +235,14 @@ footer .title .with-icon button {
   justify-content: center;
   cursor: pointer;
 }
+footer .title .menus {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
 footer .title .menu {
+  width: 100%;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -264,10 +286,14 @@ footer .sub-footer h4 {
     padding: 100px 40px;
   }
 
-  footer .menus {
+  footer .title .menus {
     display: flex;
     justify-content: space-evenly;
+    flex-direction: row;
     gap: 40px;
+  }
+  footer .title .menu {
+    width: 340px;
   }
   footer .sub-footer {
     display: flex;
@@ -346,5 +372,17 @@ footer .sub-footer h4 {
   #contact h1 {
     font-size: 50px;
     margin-top: 0;
+  }
+}
+
+@keyframes growOut {
+  0% {
+    transform: scaleY(0);
+  }
+  80% {
+    transform: scaleY(1.1);
+  }
+  100% {
+    transform: scaleY(1);
   }
 }
